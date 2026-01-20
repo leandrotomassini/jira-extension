@@ -1,9 +1,10 @@
 const observer = new MutationObserver( () => {
-  const buttons = document.querySelectorAll( 'button' );
+  const elements = document.querySelectorAll( 'button, span' );
 
-  buttons.forEach( button => {
-    if ( button.textContent.includes( "Versión de prueba de Premium" ) ) {
-      button.style.display = 'none';
+  elements.forEach( element => {
+    const text = element.textContent.trim();
+    if ( text === "Versión de prueba de Premium" || text === "Ayuda" ) {
+      element.style.display = 'none';
     }
   } );
 } );

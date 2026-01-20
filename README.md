@@ -4,7 +4,8 @@ A simple browser extension to customize the Jira interface.
 
 ## Features
 
-- Hides the "Versión de prueba de Premium" (Premium trial version) button that appears on the Jira interface.
+- Hides the "Versión de prueba de Premium" (Premium trial version) button.
+- Hides the "Ayuda" (Help) button.
 
 ## How it works
 
