@@ -1,25 +1,31 @@
-# Jira Customizer Extension
+# Web Customizer Pro
 
-A simple browser extension to customize the Jira interface.
+Una extensión de navegador para personalizar y limpiar la interfaz de varios sitios web.
 
-## Features
+## Características
 
-- Hides the "Versión de prueba de Premium" (Premium trial version) button.
-- Hides the "Ayuda" (Help) button.
+Actualmente, la extensión funciona en los siguientes sitios:
 
-## How it works
+- **Jira (`*.atlassian.net`):**
+    - Oculta banners promocionales.
+    - Oculta los botones "Versión de prueba de Premium", "Ayuda" y "Cuéntanos tu opinión".
 
-The extension injects a small JavaScript file (`script.js`) into any page on the `*.atlassian.net` domain. This script uses a `MutationObserver` to watch for changes in the page's content and automatically hides the specified trial buttons as soon as they appear.
+- **Platzi (`*.platzi.com`):**
+    - Oculta banners promocionales y cajas de recomendación.
 
-## Installation
+## ¿Cómo funciona?
 
-To use this extension, you can load it as an unpacked extension in your browser (like Google Chrome or Microsoft Edge).
+La extensión inyecta un archivo JavaScript (`script.js`) en las páginas de los dominios especificados. Este script utiliza un `MutationObserver` para observar cambios en el contenido de la página y oculta automáticamente los elementos no deseados tan pronto como aparecen.
 
-1.  Clone this repository.
-2.  Open your browser's extension management page (`chrome://extensions` or `edge://extensions`).
-3.  Enable "Developer mode".
-4.  Click "Load unpacked" and select the directory where you cloned the repository.
+## Instalación
+
+Para utilizar esta extensión, puedes cargarla como una extensión desempaquetada en tu navegador (como Google Chrome o Microsoft Edge).
+
+1.  Clona este repositorio.
+2.  Abre la página de gestión de extensiones de tu navegador (`chrome://extensions` o `edge://extensions`).
+3.  Activa el "Modo de desarrollador".
+4.  Haz clic en "Cargar descomprimida" y selecciona el directorio donde clonaste el repositorio.
 
 ---
 
-Created by ltomassini
+Creado por ltomassini
