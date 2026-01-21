@@ -1,12 +1,13 @@
 {
   "manifest_version": 3,
   "name": "Web Customizer Pro",
-  "version": "1.3",
+  "version": "1.9",
   "content_scripts": [
     {
       "matches": [
         "https://*.atlassian.net/*",
-        "https://*.platzi.com/*"
+        "https://*.platzi.com/*",
+        "https://*.youtube.com/*"
       ],
       "js": [
         "script.js"

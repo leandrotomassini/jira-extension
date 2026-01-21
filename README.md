@@ -1,10 +1,10 @@
 # Web Customizer Pro
 
-Una extensión de navegador para personalizar y limpiar la interfaz de varios sitios web.
+Una extensión de navegador para personalizar y limpiar la interfaz de varios sitios web, mejorando la experiencia de usuario al eliminar distracciones.
 
 ## Características
 
-Actualmente, la extensión funciona en los siguientes sitios:
+Actualmente, la extensión personaliza los siguientes sitios:
 
 - **Jira (`*.atlassian.net`):**
     - Oculta banners promocionales.
@@ -13,19 +13,15 @@ Actualmente, la extensión funciona en los siguientes sitios:
 - **Platzi (`*.platzi.com`):**
     - Oculta banners promocionales y cajas de recomendación.
 
+- **YouTube (`*.youtube.com`):**
+    - Oculta la sección de "Shorts".
+    - Oculta el menú lateral de la guía.
+    - Oculta los botones de "Búsqueda por voz" y "Crear".
+
 ## ¿Cómo funciona?
 
-La extensión inyecta un archivo JavaScript (`script.js`) en las páginas de los dominios especificados. Este script utiliza un `MutationObserver` para observar cambios en el contenido de la página y oculta automáticamente los elementos no deseados tan pronto como aparecen.
-
-## Instalación
-
-Para utilizar esta extensión, puedes cargarla como una extensión desempaquetada en tu navegador (como Google Chrome o Microsoft Edge).
-
-1.  Clona este repositorio.
-2.  Abre la página de gestión de extensiones de tu navegador (`chrome://extensions` o `edge://extensions`).
-3.  Activa el "Modo de desarrollador".
-4.  Haz clic en "Cargar descomprimida" y selecciona el directorio donde clonaste el repositorio.
+La extensión utiliza un script para monitorear y ocultar dinámicamente elementos no deseados en las páginas web soportadas, resultando en una interfaz más limpia y enfocada.
 
 ---
 
-Creado por ltomassini
+ltomassini
