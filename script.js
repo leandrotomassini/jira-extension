@@ -13,6 +13,27 @@ style.innerHTML = `
     z-index: -9999 !important;
   }
 
+  /* --- FIX DE ALTURA DEL HEADER (LO QUE PEDISTE) --- */
+  /* Ocultamos los filtros */
+  ytd-feed-filter-chip-bar-renderer { display: none !important; }
+  
+  /* Forzamos al vidrio esmerilado a tener SOLO la altura de la barra de búsqueda (56px) */
+  #frosted-glass.ytd-app,
+  #frosted-glass.with-chipbar.ytd-app {
+    height: 56px !important;
+    margin-top: 0 !important;
+  }
+  
+  /* Ajustamos la variable global de YouTube para que el contenido suba */
+  ytd-app {
+    --ytd-masthead-height: 56px !important;
+  }
+  
+  /* Aseguramos que el contenedor principal respete esto */
+  #masthead-container.ytd-app {
+    height: 56px !important;
+  }
+
   /* OCULTAR CÓDIGO DE PAÍS */
   #country-code { display: none !important; }
 
@@ -60,7 +81,7 @@ style.innerHTML = `
     display: none !important;
   }
   
-  /* Ocultar Metadata pero mantener en DOM */
+  /* Ocultar Metadata manteniendo DOM */
   ytd-rich-item-renderer .yt-lockup-metadata-view-model__metadata {
     opacity: 0 !important;
     height: 0 !important;
@@ -78,7 +99,7 @@ style.innerHTML = `
 document.head.appendChild( style );
 
 
-// --- 2. LÓGICA JAVASCRIPT (OPTIMIZADA) ---
+// --- 2. LÓGICA JAVASCRIPT ---
 
 let isSorting = false;
 let observerTimeout = null;
@@ -135,7 +156,6 @@ const killVideoInstantly = ( card, originalBtn ) => {
 };
 
 const processCard = ( card ) => {
-  // Si ya tiene el botón, NO TOCAR (Evita parpadeo)
   if ( card.querySelector( '.custom-killer-btn' ) ) return;
 
   if ( card.textContent.includes( 'Se quitó el video' ) ) {
@@ -211,22 +231,17 @@ const sortHome = () => {
   items.forEach( item => fragment.appendChild( item ) );
   container.prepend( fragment );
 
-  // Aumentamos el delay para asegurar estabilidad
   setTimeout( () => isSorting = false, 800 );
 };
 
 // --- OBSERVER INTELIGENTE ---
 const observer = new MutationObserver( ( mutations ) => {
-  // FILTRO: Solo actuar si se agregan nodos nuevos (scrolling).
-  // Ignorar cambios de atributos (hover, clases, estilos).
   let hasNewNodes = false;
 
   for ( const mutation of mutations ) {
     if ( mutation.type === 'childList' && mutation.addedNodes.length > 0 ) {
-      // Verificamos si lo agregado es relevante
       for ( const node of mutation.addedNodes ) {
-        if ( node.nodeType === 1 ) { // Es un elemento HTML
-          // Si es una tarjeta de video o un contenedor
+        if ( node.nodeType === 1 ) {
           if ( node.tagName === 'YTD-RICH-ITEM-RENDERER' || node.querySelector?.( 'ytd-rich-item-renderer' ) ) {
             hasNewNodes = true;
             break;
@@ -237,7 +252,6 @@ const observer = new MutationObserver( ( mutations ) => {
     if ( hasNewNodes ) break;
   }
 
-  // Si no hay nodos nuevos importantes, NO HACER NADA (Evita parpadeo por hover)
   if ( !hasNewNodes ) return;
 
   if ( observerTimeout ) clearTimeout( observerTimeout );
@@ -246,7 +260,6 @@ const observer = new MutationObserver( ( mutations ) => {
     const cards = document.querySelectorAll( 'ytd-rich-item-renderer' );
     cards.forEach( processCard );
 
-    // Limpieza texto (Jira/Platzi)
     document.querySelectorAll( 'button, span, a' ).forEach( el => {
       const t = el.textContent.trim();
       if ( t === "Versión de prueba de Premium" || t === "Ayuda" || t === "Cuéntanos tu opinión" ) el.style.display = 'none';
