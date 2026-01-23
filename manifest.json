@@ -1,7 +1,19 @@
 {
   "manifest_version": 3,
-  "name": "Jira & Platzi Customizer",
+  "name": "libertad",
   "version": "1.11",
+  "icons": {
+    "16": "assets/ico.png",
+    "48": "assets/ico.png",
+    "128": "assets/ico.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "assets/ico.png",
+      "48": "assets/ico.png",
+      "128": "assets/ico.png"
+    }
+  },
   "content_scripts": [
     {
       "matches": [
